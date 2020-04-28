@@ -1,0 +1,133 @@
+{
+  "swagger": "2.0",
+  "basePath": "/",
+  "paths": {
+    "/damapis/leadscore": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "operationId": "get_dam_lead_score",
+        "parameters": [
+          {
+            "name": "payload",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Language"
+            }
+          }
+        ],
+        "tags": [
+          "damapis"
+        ]
+      }
+    },
+    "/damapis/predictchurnrisk": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "operationId": "get_dam_churn_predict_risk",
+        "parameters": [
+          {
+            "name": "payload",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Language"
+            }
+          }
+        ],
+        "tags": [
+          "damapis"
+        ]
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "operationId": "post_dam_churn_predict_risk",
+        "parameters": [
+          {
+            "name": "payload",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/damchurnjson"
+            }
+          }
+        ],
+        "tags": [
+          "damapis"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "API",
+    "version": "1.0"
+  },
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "Basic Auth": {
+      "type": "basic",
+      "in": "header",
+      "name": "Authorization"
+    }
+  },
+  "security": [
+    {
+      "Basic Auth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "damapis",
+      "description": "DH AA COE Published Data Science Model APIs for Dubai Asset Management"
+    }
+  ],
+  "definitions": {
+    "Language": {
+      "properties": {
+        "language": {
+          "type": "string",
+          "default": "The Language."
+        }
+      },
+      "type": "object"
+    },
+    "damchurnjson": {
+      "properties": {
+        "htent": {
+          "type": "integer",
+          "default": "Htenant ID"
+        },
+        "hunit": {
+          "type": "integer",
+          "default": "Unit ID"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "responses": {
+    "ParseError": {
+      "description": "When a mask can't be parsed"
+    },
+    "MaskError": {
+      "description": "When any error occurs on mask"
+    }
+  }
+}
